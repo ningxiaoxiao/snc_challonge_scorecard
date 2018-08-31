@@ -10,19 +10,19 @@ req=urllib.request.Request(url='https://challonge.com/wy8ezemk',headers=headers)
 page=urllib.request.urlopen(req)
 soup=BeautifulSoup(page)
 
-rank=""
-participant=""
-matchinfo=""
-byes=""
-score=""
-tb=""
-buchholz=""
-pts=""
+rank=""         #排名
+participant=""  #参赛者
+matchinfo=""    #比赛比分 胜-负
+byes=""         #
+score=""        #总分 胜积1分 负积0分
+tb=""           #小分 对阵同胜场胜数
+buchholz=""     #比赛分 所有胜场对手积分,去掉最大最小
+pts=""          #胜负差 
 
 table=soup.find('table')
 f=open('table.csv','w')
 cw=csv.writer(f)
-cw.writerow( ['rank','participant','matchinfo W-L','byes','score','tb','buchholz','pts'])
+cw.writerow( ['排名','参赛者','比赛比分 W-L','byes','总分','小分','比赛分','胜负差'])
 for row in table.findAll("tr"):
     cell=row.findAll("td")
     
