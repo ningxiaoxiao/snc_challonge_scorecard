@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import urllib
 from urllib import request
 import csv
